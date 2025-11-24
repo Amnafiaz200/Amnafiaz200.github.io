@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amna Fiaz - AI Software Engineer & ML Integrator</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">WELCOME</div>
+  </div>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Holographic Grid Background -->
+  <div class="grid-bg"></div>
+
+  <div id="app" class="flex flex-col min-h-screen">
+    <!-- Futuristic Header -->
+    <nav>
+      <div class="nav-container">
+        <a href="#contact" class="logo">Lets Engineering Intelligence</a>
+        <div class="flex items-center">
+          <!-- Navigation Links (Managed by Vue) -->
+          <div class="nav-links">
+            <a v-for="section in sections" 
+               :href="'#' + section.toLowerCase()"
+               :class="{ 'active': currentSection === section.toLowerCase() }">
+              {{ section }}
+            </a>
+          <!-- </div>
+          <button @click="toggleDarkMode" class="mode-toggle"></button>
+        </div> -->
+      </div>
+    </nav>
+
+    <!-- Stunning Hero Section
+    <section id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Engineering Intelligence</h1>
+          <p class="hero-subtitle">Pushing boundaries with scalable AI systems, intelligent automation, and high-reliability backend engineering.</p>
+          <a href="#contact" class="hero-cta">
+            <span>Connect With Me</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-decoration"></div>
+    </section> -->
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="about-container">
+        
+        <div class="about-content">
+          <h3 class="text-3xl font-bold mb-4 text-primary font-orbitron">Amna Fiaz</h3>
+          <p class="text-xl mb-4 font-bold text-secondary">AI Software Engineer | Python Backend Developer | ML Integrator</p>
+          <p class="about-text mb-6">
+            AI Software Engineer experienced in building scalable backend systems, high-performance databases, and intelligent ML-powered applications.
+          </p>
+          <!-- <p class="about-text mb-6">
+            Currently pursuing MS Artificial Intelligence at LUMS, with strong foundations in Python, FastAPI, SQL, Machine Learning, RAG pipelines, and system optimization.
+          </p> -->
+          <ul>
+  <li>Programming Languages: <strong>Python, JavaScript, SQL</strong></li>
+  <li>Technical Skills: <strong>OOP, Data Structures, Databases</strong></li>
+  <li>Backend & Frontend: <strong>FastAPI, Node.js, Express.js, HTML/CSS</strong></li>
+  <li>APIs & Version Control: <strong>REST APIs, API Integration, Git, GitHub, Docker, CI/CD</strong></li>
+  <li>AI Tools: <strong>Scikit-Learn, HuggingFace, LangChain, RAG</strong></li>
+  <li>Soft Skills: <strong>Problem-Solving, Analytical Thinking, Collaboration, Communication</strong></li>
+</ul>
+
+        </div>
+        <div class="profile-image">
+          <img src="images/amna.png" alt="Amna Fiaz Profile Placeholder">
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section (New) -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline-container">
+            <div v-for="(edu, index) in education" :key="index" class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">{{ edu.degree }}</h3>
+                    <p class="timeline-subtitle">{{ edu.institution }}</p>
+                    <p class="timeline-duration">{{ edu.duration }} | {{ edu.location }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Experience Section (New) -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline-container">
+            <div v-for="(exp, index) in experience" :key="index" class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">{{ exp.title }}</h3>
+                    <p class="timeline-subtitle">{{ exp.company }}</p>
+                    <p class="timeline-duration">{{ exp.duration }} | {{ exp.location }}</p>
+                    <ul class="exp-tasks">
+                        <li v-for="task in exp.tasks">
+                            <i class="fas fa-circle text-[8px] text-primary mr-3"></i> {{ task }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Certification is placed after experience for context -->
+            <div class="timeline-item mt-12">
+                <div class="timeline-icon bg-secondary">
+                    <i class="fas fa-certificate text-darker"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title text-secondary">Certification</h3>
+                    <p class="timeline-subtitle font-bold text-primary">{{ certification.title }}</p>
+                    <p class="text-sm opacity-80 mb-2">{{ certification.location }}</p>
+                    <p class="text-sm opacity-80 mb-4">{{ certification.description }}</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span v-for="partner in certification.partners" class="tech-tag bg-primary/20 border-primary/40">{{ partner }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-container">
+        <div class="projects-grid">
+          <div v-for="project in projects" class="project-card">
+            <img :src="project.image" :alt="project.title" class="project-image">
+            <div class="project-content">
+              <h3 class="project-title">{{ project.title }}</h3>
+              <p class="text-sm font-bold mb-4 text-secondary">{{ project.tech_focus }}</p>
+              
+              <div class="project-tech">
+                <span v-for="tech in project.tech_stack" class="tech-tag">{{ tech }}</span>
+              </div>
+              
+              <ul class="project-features">
+                <li v-for="feature in project.features">
+                    <i class="fas fa-check-circle text-secondary mr-2"></i> {{ feature }}
+                </li>
+              </ul>
+              
+              <a :href="project.link" target="_blank" class="project-link mt-4">
+                View Project <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-container">
+        <div class="contact-form-container">
+          <h3 class="form-title">Get In Touch</h3>
+          <form @submit.prevent="submitForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input v-model="form.name" type="text" id="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input v-model="form.email" type="email" id="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea v-model="form.message" id="message" class="form-input" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info-container">
+          <h3 class="info-title">Direct Channels</h3>
+          
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-content">
+              <h4>Location</h4>
+              <p>Lahore, Pakistan</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-content">
+              <h4>Email (Primary)</h4>
+              <a href="mailto:amna30042002@gmail.com">amna30042002@gmail.com</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-content">
+              <h4>Email (Academic)</h4>
+              <a href="mailto:25280106@lums.edu.pk">25280106@lums.edu.pk</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="info-content">
+              <h4>Phone</h4>
+              <a href="tel:+923219976050">+92 321 9976050</a>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/amna-ai-engineer" target="_blank" class="social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Amnafiaz200" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:amna30042002@gmail.com" target="_blank" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.fiverr.com/users/amna_fayaz/seller_dashboard" target="_blank" class="social-link">
+  <img src="/images/fiverr-logo.png" alt="Fiverr" class="w-5 h-5"/>
+</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <a href="#" class="footer-logo">AMNA FIAZ</a>
+        <div class="footer-links">
+          <a v-for="section in sections" :href="'#' + section.toLowerCase()" class="footer-link">{{ section }}</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/amna-ai-engineer" target="_blank" class="footer-social-link">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Amnafiaz200" target="_blank" class="footer-social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:amna30042002@gmail.com" target="_blank" class="footer-social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p class="footer-copyright">© {{ new Date().getFullYear() }} Amna Fiaz. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Vue.js CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
