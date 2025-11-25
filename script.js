@@ -28,7 +28,7 @@ education: [
       // Experience Data
       experience: [
         {
-            title: 'Python Backend Developer',
+            title: 'Software Engineer | ML Integrator',
             company: 'LUMS (BIRL)',
             duration: '08/2025 — Present',
             location: 'Lahore, Pakistan',
@@ -206,4 +206,5 @@ education: [
   beforeUnmount() {
     window.removeEventListener('scroll', this.updateCurrentSection);
   }
+
 }).mount('#app');
