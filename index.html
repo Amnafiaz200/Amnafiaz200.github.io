@@ -34,17 +34,21 @@
     <nav>
       <div class="nav-container">
         <a href="#contact" class="logo">Lets Engineering Intelligence</a>
-        <div class="flex items-center">
+        <div class="nav-menu">
           <!-- Navigation Links (Managed by Vue) -->
-          <div class="nav-links">
+          <div class="nav-links" id="nav-links">
             <a v-for="section in sections" 
                :href="'#' + section.toLowerCase()"
                :class="{ 'active': currentSection === section.toLowerCase() }">
               {{ section }}
             </a>
-          <!-- </div>
-          <button @click="toggleDarkMode" class="mode-toggle"></button>
-        </div> -->
+          </div>
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -275,5 +279,4 @@
 </body>
 
 </html>
-
 
