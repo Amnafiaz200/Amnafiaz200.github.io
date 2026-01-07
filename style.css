@@ -107,6 +107,12 @@ nav {
   margin: 0 auto;
 }
 
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .logo {
   font-size: 1.8rem;
   font-weight: 900;
@@ -118,6 +124,88 @@ nav {
   transition: all 0.3s ease;
   position: relative;
   padding-right: 2rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.light-mode .bar {
+  background: var(--secondary);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(10, 10, 18, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    border-left: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  }
+  
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  
+  .light-mode .nav-links {
+    background: rgba(248, 250, 252, 0.95);
+    border-left: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
 }
 
 /* .logo::after {
@@ -1026,6 +1114,8 @@ footer {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-link {
@@ -1094,10 +1184,66 @@ footer {
   
   .logo {
     font-size: 1.5rem;
+    padding-right: 1rem;
+  }
+  
+  .nav-menu {
+    gap: 1rem;
+  }
+  
+  .hamburger {
+    display: flex;
   }
   
   .nav-links {
-    gap: 1rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(10, 10, 18, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    border-left: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  }
+  
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  
+  .light-mode .nav-links {
+    background: rgba(248, 250, 252, 0.95);
+    border-left: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
   
   .hero-title {
@@ -1119,23 +1265,31 @@ footer {
   .about-container {
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
   }
   
   .profile-image {
     width: 250px;
     height: 250px;
+    top: 0;
+  }
+  
+  .about-content {
+    padding: 2rem;
+    text-align: center;
   }
   
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .timeline-container::before {
-      left: 30px;
+  .timeline-container {
+    padding: 0 1rem;
   }
   
-  .timeline-item {
-      margin-left: 30px;
+  .projects-container {
+    padding: 0 1rem;
   }
   
   .timeline-icon {
@@ -1183,11 +1337,40 @@ footer {
   
   .contact-container {
     padding: 0 1rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .contact-form-container,
   .contact-info-container {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .info-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
   }
 
   .projects-grid {
