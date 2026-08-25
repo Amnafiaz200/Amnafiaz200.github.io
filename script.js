@@ -10,13 +10,6 @@ createApp({
 
       education: [
         {
-          degree: 'MS Artificial Intelligence',
-          institution: 'LUMS',
-          duration: 'Jul 2025 — Present',
-          location: 'Lahore, Pakistan',
-          courses: 'AI Foundations, MLOps, Deep Learning, Robotics.'
-        },
-        {
           degree: 'BS Computer Engineering',
           institution: 'University of Engineering and Technology (UET)',
           duration: '09/2021 — 03/2025',
